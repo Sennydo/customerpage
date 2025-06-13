@@ -8,9 +8,4 @@ const pool = mysql.createPool({
     database: process.env.DB_DATABASE
 })
 
-try {
-
-} catch (error) {
-    throw Error(error.message);
-    return {error};
-}
+export default pool;
