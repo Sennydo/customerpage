@@ -1,10 +1,31 @@
+'use client'
+import { useState } from "react"
 
 const Form = () => {
+
+    const [formDetails, setFormDetails] = useState({name: "", email: "", message:""});
+
+    function handleForm(e) {
+        setFormDetails(data => ({...data, [e.target.name]: e.target.value})) // ...data is previous data plus new data
+    }
+
+    function checkValue(e) {
+        console.log(formDetails);
+    }
+
+    async function submitForm(e) {
+        e.preventDefault();
+
+    }
+
     return(
         <div className="w-[50rem] h-[45rem] flex-col text-center rounded-2xl mr-[5rem] p-8 shadow-2xl bg-white">
             <div className=" flex flex-row mb-[2rem]">
-                <h1 className="m-2 w-[20%]">First Name: </h1>
-                <input className="border-1 w-[60%]"></input>
+                <h1 className="m-2 w-[20%]"> Name: </h1>
+                <input className="border-1 w-[60%]"
+                 placeholder="Type your name" 
+                 value={formDetails.name}
+                 onChange={handleForm}></input>
             </div>
 
             <div className=" flex flex-row mb-[2rem]">
