@@ -16,6 +16,22 @@ const Form = () => {
     async function submitForm(e) {
         e.preventDefault();
 
+        const response = await fetch('/api', {
+            method:'POST',
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(formDetails)
+        });
+
+        const {working, err} = await response.json();
+
+        console.log(working);
+        console.log(err);
+
+        if (working){
+            setFormDetails({name: "", email: "", message:""});
+        }
     }
 
     return(
@@ -49,7 +65,9 @@ const Form = () => {
             <div className=" flex flex-row mb-[2rem]">
                 <h1 className="m-2 w-[20%]"></h1>
                 <div className="w-[60%] flex">
-                    <button className="border-2 pt-1 pb-1 px-4"><h2>Submit</h2></button>
+                    <button className="border-2 pt-1 pb-1 px-4"
+                        onClick={submitForm}
+                        ><h2>Submit</h2></button>
                 </div>
             </div>
 

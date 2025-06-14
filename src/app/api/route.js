@@ -14,7 +14,7 @@ export const POST = async(request) => {
     const {name, email, message} = await request.json();
 
     if (!name || !message) {
-        return NextResponse.json({message: "Name and message are required"}, {status:400});
+        return NextResponse.json({err: "Name and message are required"}, {status:400});
     }
 
     try {
@@ -22,7 +22,7 @@ export const POST = async(request) => {
             'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)',
             [name, email, message]
         );
-        return NextResponse.json({message: "Working"}, {status:201})
+        return NextResponse.json({working: true}, {status:201})
 
     } catch (error) {
         console.log(error)
