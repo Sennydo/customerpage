@@ -35,7 +35,7 @@ const Form = () => {
     }
 
     return(
-        <div className="w-[50rem] h-[45rem] flex-col text-center rounded-2xl mr-[5rem] p-8 shadow-2xl bg-white">
+        <div className="w-[50rem] h-[40rem] flex-col text-center rounded-2xl mr-[5rem] p-8 shadow-2xl bg-white">
             <div className=" flex flex-row mb-[2rem]">
                 <h1 className="m-2 w-[20%]"> Name: </h1>
                 <input className="border-gray-400 border-1 p-1 w-[60%]"
