@@ -4,7 +4,7 @@
     border: 1px solid black;
 }
 
-.table-class td {
+.table-class td, th {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding-top: 0.25rem;

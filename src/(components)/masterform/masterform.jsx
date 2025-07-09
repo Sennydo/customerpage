@@ -1,13 +1,23 @@
 'use client'
 import { useState } from "react"
+import EditForm from "../editForm/editForm"
 
 const MasterForm = ({customers}) => {
     const [showTab, setShowTab] = useState(false)
-
-    console.log(customers)
+    const [editingMode, setEditingMode] = useState(false)
+    const [editData, setEditData] = useState(null)
 
     const showTableToggle = () => {
         setShowTab(!showTab);
+    }
+
+    const globalCloseEdit = (closeEdit) => {
+        setEditingMode(false)
+    }
+
+    const handleEdit = (cust) => {
+        setEditingMode(!editingMode)
+        setEditData(cust)
     }
 
     return (
@@ -39,13 +49,23 @@ const MasterForm = ({customers}) => {
                                     <td>{cust.short_name}</td>
                                     <td>{cust.contact_person}</td>
                                     <td>{cust.city}</td>
+                                    <td><button className="p-1 m-1" onClick={() => {
+                                        handleEdit(cust)
+                                    }}>Edit</button>
+                                        <button className="p-1 m-1">Delete</button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
 
                     </table>
+
                 </div>
             )}
+
+            {editingMode &&
+               <EditForm closeState={editingMode} closeFunc={globalCloseEdit} rowValData={editData}/>
+            }
 
         </div>
     )
