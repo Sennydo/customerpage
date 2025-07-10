@@ -3,7 +3,7 @@ import { useState } from "react"
 import EditForm from "../editForm/editForm"
 
 const MasterForm = ({customers}) => {
-    const [showTab, setShowTab] = useState(false)
+    const [showTab, setShowTab] = useState(true)
     const [editingMode, setEditingMode] = useState(false)
     const [editData, setEditData] = useState(null)
 
@@ -20,12 +20,28 @@ const MasterForm = ({customers}) => {
         setEditData(cust)
     }
 
+    const deleteData = async(e, id) => {
+        e.preventDefault()
+
+        const response = await fetch('/api', {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(id)
+        })
+
+        const message = await response.json()
+        console.log(message)
+
+        window.location.reload()
+    }
+
     return (
         <div>
             <h1 className="text-center text-4xl m-2 mb-[2rem]">Database</h1>
 
             <div className="flex justify-center gap-[2rem] mb-[2rem]">
-                <button className="border-1 py-1 px-5"><h1>Edit</h1></button>
                 <button className="border-1 py-1 px-2" onClick={showTableToggle}>View Table</button>
             </div>
 
@@ -52,7 +68,9 @@ const MasterForm = ({customers}) => {
                                     <td><button className="p-1 m-1" onClick={() => {
                                         handleEdit(cust)
                                     }}>Edit</button>
-                                        <button className="p-1 m-1">Delete</button>
+                                        <button className="p-1 m-1" onClick={(e) => {
+                                            deleteData(e, cust.id)
+                                        }}>Delete</button>
                                     </td>
                                 </tr>
                             ))}

@@ -30,3 +30,32 @@ export const POST = async(request) => {
     }
 }
 
+export const PUT = async(req) => {
+    const {id, SI_no, cust_name, short_name, contact_person, city} = await req.json()
+
+    const [result] = await pool.execute(
+        'UPDATE customersPage SET SI_no = ?, cust_name = ?, short_name = ?, contact_person = ?, city = ? WHERE id = ?',
+        [SI_no, cust_name, short_name, contact_person, city, id]
+    )
+
+    const updateResult = result.affectedRows ?? 0
+    if(updateResult == 0){
+        return NextResponse.json({err: "No item updated"})
+    }
+    return NextResponse.json({message: "Success"})
+}
+
+export const DELETE = async(req) => {
+    const id = await req.json()
+
+    const [result] = await pool.execute(
+        'DELETE FROM customersPage WHERE id = ?',
+        [id]
+    )
+    const updateResult = result.affectedRows ?? 0
+    if (updateResult == 0) {
+        return NextResponse.json({message: "No action took place"})
+    }
+    return NextResponse.json({message: "Done"})
+}
+

@@ -12,6 +12,24 @@ const EditForm = ({rowValData, closeState, closeFunc}) => {
     }
 
 
+    const patchData = async(e) => {
+        e.preventDefault()
+
+        const response = await fetch('/api', {
+            method: 'PUT',
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(rowVal)
+        }
+        )
+
+        const {message} = await response.json()
+        console.log(message)
+
+        window.location.reload()
+        
+    }
     console.log(closeState)
 
     return (
@@ -35,7 +53,7 @@ const EditForm = ({rowValData, closeState, closeFunc}) => {
 
                 <div>
                     <button className="border-1" onClick={closeFunc}>Close</button>
-                    <button className="border-1" onClick={closeFunc}>Submit</button>
+                    <button className="border-1" onClick={patchData}>Submit</button>
                 </div>
             </div>
 
