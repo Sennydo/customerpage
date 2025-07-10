@@ -1,8 +1,12 @@
 'use client'
 import { useState } from "react"
 import EditForm from "../editForm/editForm"
+import Link from "next/link"
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 const MasterForm = ({customers}) => {
+
     const [showTab, setShowTab] = useState(true)
     const [editingMode, setEditingMode] = useState(false)
     const [editData, setEditData] = useState(null)
@@ -43,13 +47,16 @@ const MasterForm = ({customers}) => {
 
             <div className="flex justify-center gap-[2rem] mb-[2rem]">
                 <button className="border-1 py-1 px-2" onClick={showTableToggle}>View Table</button>
+                <Link href='/customer'>
+                    <button className="border-1 py-1 px-2">Add New</button>
+                </Link>
             </div>
 
             {showTab && (
                 <div className="flex justify-center table-class">
                     <table className="border-1">
                         <thead>
-                            <tr>
+                            <tr className="bg-gray-400">
                                 <th>SI_No</th>
                                 <th>Customer Name</th>
                                 <th>Short Name</th>
@@ -65,12 +72,12 @@ const MasterForm = ({customers}) => {
                                     <td>{cust.short_name}</td>
                                     <td>{cust.contact_person}</td>
                                     <td>{cust.city}</td>
-                                    <td><button className="p-1 m-1" onClick={() => {
+                                    <td><button className="p-1 m-1 cursor-pointer" onClick={() => {
                                         handleEdit(cust)
-                                    }}>Edit</button>
-                                        <button className="p-1 m-1" onClick={(e) => {
+                                    }}><FaEdit /></button>
+                                        <button className="p-1 m-1 cursor-pointer" onClick={(e) => {
                                             deleteData(e, cust.id)
-                                        }}>Delete</button>
+                                        }}><MdDelete /></button>
                                     </td>
                                 </tr>
                             ))}

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-.table-class * {
+.table-class tr, td, th {
     border: 1px solid black;
 }
 
