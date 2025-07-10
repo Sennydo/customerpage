@@ -1,5 +1,5 @@
-import Form from "@/(components)/form/form";
 import Navbar from "@/(components)/navbar/navbar";
+import NewForm from "@/(components)/newForm/newForm";
 
 
 const Customer = () => {
@@ -12,7 +12,7 @@ const Customer = () => {
                     <h1 className="w-[20rem] pl-6 pt-3">Fill out your information and our representative will be in touch with you shortly. Please give us 2-3 business days</h1>
                 </div>
                 <div className="flex justify-end">
-                    <Form />
+                    <NewForm />
                 </div>
             </div>
 

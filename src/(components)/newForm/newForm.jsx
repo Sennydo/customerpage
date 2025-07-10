@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react"
 
-const Form = () => {
+const NewForm = () => {
 
     const [formDetails, setFormDetails] = useState({SI_no: "", cust_name: "", short_name:"", contact_person: "", city: ""});
 
@@ -39,7 +39,7 @@ const Form = () => {
             <div className=" flex flex-row mb-[2rem]">
                 <h1 className="m-2 w-[20%]"> SI number: </h1>
                 <input className="border-gray-400 border-1 p-1 w-[60%]"
-                 name="name"
+                 name="SI_no"
                  value={formDetails.SI_no}
                  onChange={handleForm}></input>
             </div>
@@ -47,7 +47,7 @@ const Form = () => {
             <div className=" flex flex-row mb-[2rem]">
                 <h1 className="m-2 w-[20%]">Customer Name: </h1>
                 <input className="border-gray-400 border-1 p-1 w-[60%]"
-                    name="email"
+                    name="cust_name"
                     value={formDetails.cust_name}
                     onChange={handleForm}
                     ></input>
@@ -56,7 +56,7 @@ const Form = () => {
             <div className=" flex flex-row mb-[2rem]">
                 <h1 className="m-2 w-[20%]">Short Name: </h1>
                 <input className="border-gray-400 border-1 p-1 w-[60%]"
-                    name="email"
+                    name="short_name"
                     value={formDetails.short_name}
                     onChange={handleForm}
                     ></input>
@@ -64,20 +64,20 @@ const Form = () => {
 
             <div className=" flex flex-row mb-[2rem]">
                 <h1 className="m-2 w-[20%]">Contact Person: </h1>
-                <textarea type="text" className="border-gray-400 border-1 p-1 w-[60%] h-[20rem]"
-                    name="message"
-                    value={formDetails.short_name}
+                <input className="border-gray-400 border-1 p-1 w-[60%]"
+                    name="contact_person"
+                    value={formDetails.contact_person}
                     onChange={handleForm}
-                    ></textarea>
+                    ></input>
             </div>
 
             <div className=" flex flex-row mb-[2rem]">
                 <h1 className="m-2 w-[20%]">City: </h1>
-                <textarea type="text" className="border-gray-400 border-1 p-1 w-[60%] h-[20rem]"
-                    name="message"
+                <input className="border-gray-400 border-1 p-1 w-[60%]"
+                    name="city"
                     value={formDetails.city}
                     onChange={handleForm}
-                    ></textarea>
+                    ></input>
             </div>
             
 
@@ -95,4 +95,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default NewForm

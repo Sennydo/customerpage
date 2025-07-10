@@ -19,7 +19,7 @@ export const POST = async(request) => {
 
     try {
         await pool.execute(
-            'INSERT INTO contactPerson (SI_no, cust_name, short_name, contact_person, city) VALUES (?, ?, ?, ?, ?)',
+            'INSERT INTO customersPage (SI_no, cust_name, short_name, contact_person, city) VALUES (?, ?, ?, ?, ?)',
             [SI_no, cust_name, short_name, contact_person, city]
         );
         return NextResponse.json({working: true}, {status:201})
